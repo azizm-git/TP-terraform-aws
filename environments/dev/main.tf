@@ -1,6 +1,18 @@
-# Étape 1 : aucune ressource créée.
-# Seule une data source interroge AWS pour valider l'authentification.
+data "aws_ami" "debian" {
+  most_recent = true
+  owners      = ["136693071363"]
 
-data "aws_caller_identity" "current" {}
+  filter {
+    name   = "name"
+    values = ["debian-12-amd64-*"]
+  }
+}
 
-data "aws_region" "current" {}
+resource "aws_instance" "debian" {
+  ami           = data.aws_ami.debian.id
+  instance_type = var.instance_type
+
+  tags = {
+    Name = var.instance_name
+  }
+}
