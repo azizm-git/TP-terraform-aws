@@ -1,0 +1,22 @@
+# Répertoire de travail Terraform (binaires providers)
+.terraform/
+
+# State Terraform (contient des secrets en clair)
+*.tfstate
+*.tfstate.*
+
+# Variables sensibles
+terraform.tfvars
+*.auto.tfvars
+
+# Clés SSH générées
+*.pem
+*.key
+id_rsa*
+
+# Plans
+*.tfplan
+
+# Divers
+crash.log
+.DS_Store
