@@ -19,3 +19,8 @@ variable "instance_name" {
   type    = string
   default = "tp-debian"
 }
+
+variable "my_ip" {
+  type    = string
+  default = "31.32.13.89/32"
+}
