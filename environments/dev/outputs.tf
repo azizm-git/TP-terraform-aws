@@ -1,11 +1,11 @@
 output "instance_id" {
-  value = aws_instance.debian.id
+  value = module.ec2.instance_id
 }
 
 output "public_ip" {
-  value = aws_instance.debian.public_ip
+  value = module.ec2.public_ip
 }
 
 output "ami_id" {
-  value = data.aws_ami.debian.id
+  value = module.ec2.ami_id
 }
