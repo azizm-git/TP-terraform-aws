@@ -102,6 +102,15 @@ resource "aws_instance" "debian" {
   vpc_security_group_ids = [aws_security_group.ssh.id]
   key_name               = aws_key_pair.ssh.key_name
 
+  user_data = templatefile("${path.module}/templates/cloud-init.yaml.tpl", {
+    hostname       = var.hostname
+    username       = var.username
+    password_hash  = var.password_hash
+    ssh_public_key = tls_private_key.ssh.public_key_openssh
+  })
+
+  user_data_replace_on_change = true
+
   tags = {
     Name = var.instance_name
   }

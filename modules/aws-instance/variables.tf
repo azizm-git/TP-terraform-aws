@@ -21,3 +21,16 @@ variable "my_ip" {
 variable "key_name" {
   type = string
 }
+
+variable "hostname" {
+  type = string
+}
+
+variable "username" {
+  type = string
+}
+
+variable "password_hash" {
+  type      = string
+  sensitive = true
+}

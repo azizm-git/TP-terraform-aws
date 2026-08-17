@@ -24,3 +24,18 @@ variable "my_ip" {
   type    = string
   default = "31.32.13.89/32"
 }
+
+variable "hostname" {
+  type    = string
+  default = "Ec2-debian-demo"
+}
+
+variable "username" {
+  type    = string
+  default = "aziz"
+}
+
+variable "password_hash" {
+  type      = string
+  sensitive = true
+}
