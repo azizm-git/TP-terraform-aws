@@ -6,8 +6,7 @@ module "ec2" {
   my_ip         = var.my_ip
   vpc_cidr      = "10.0.0.0/16"
   subnet_cidr   = "10.0.1.0/24"
-  key_name      = "tp-key"
   hostname      = var.hostname
-  username      = var.username
+  users         = var.users
   password_hash = var.password_hash
 }

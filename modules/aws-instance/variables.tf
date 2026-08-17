@@ -18,16 +18,12 @@ variable "my_ip" {
   type = string
 }
 
-variable "key_name" {
-  type = string
-}
-
 variable "hostname" {
   type = string
 }
 
-variable "username" {
-  type = string
+variable "users" {
+  type = map(string)
 }
 
 variable "password_hash" {

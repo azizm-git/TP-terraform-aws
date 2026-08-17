@@ -19,5 +19,5 @@ output "security_group_id" {
 }
 
 output "ssh_command" {
-  value = "ssh -i ${var.key_name}.pem admin@${aws_instance.debian.public_ip}"
+  value = "ssh -i ~/.ssh/id_ed25519 aziz@${aws_instance.debian.public_ip}"
 }

@@ -2,31 +2,36 @@
 
 hostname: ${hostname}
 fqdn: ${hostname}
-prefer_fqdn_over_hostname: false
-
-keyboard:
-  layout: fr
 
 timezone: Europe/Paris
 
-users:
-  - name: ${username}
-    home: /home/${username}
-    shell: /bin/bash
-    sudo: ALL=(ALL) NOPASSWD:ALL
-    lock_passwd: false
-    passwd: ${password_hash}
+keyboard:
+  layout: fr
+  variant: azerty
 
-ssh_pwauth: true
+users:
+%{ for name, key in users ~}
+  - name: ${name}
+    groups: sudo
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ${key}
+    passwd: ${password_hash}
+    lock_passwd: false
+    sudo: ALL=(ALL) NOPASSWD:ALL
+%{ endfor ~}
 
 package_update: true
+package_upgrade: true
 
 packages:
   - vim
   - curl
   - htop
 
+ssh_pwauth: true
+
 runcmd:
-  - rm -f /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
-  - echo "PasswordAuthentication yes" > /etc/ssh/sshd_config.d/99-tp-cloudinit.conf
-  - systemctl restart ssh
+%{ for name, key in users ~}
+  - chmod 700 /home/${name}
+%{ endfor ~}

@@ -22,7 +22,7 @@ variable "instance_name" {
 
 variable "my_ip" {
   type    = string
-  default = "31.32.13.89/32"
+  default = "90.92.51.241/32"
 }
 
 variable "hostname" {
@@ -30,9 +30,8 @@ variable "hostname" {
   default = "Ec2-debian-demo"
 }
 
-variable "username" {
-  type    = string
-  default = "aziz"
+variable "users" {
+  type = map(string)
 }
 
 variable "password_hash" {
