@@ -9,8 +9,6 @@ keyboard:
 
 timezone: Europe/Paris
 
-locale: fr_FR.UTF-8
-
 users:
   - name: ${username}
     home: /home/${username}
@@ -18,8 +16,6 @@ users:
     sudo: ALL=(ALL) NOPASSWD:ALL
     lock_passwd: false
     passwd: ${password_hash}
-    ssh_authorized_keys:
-      - ${ssh_public_key}
 
 ssh_pwauth: true
 

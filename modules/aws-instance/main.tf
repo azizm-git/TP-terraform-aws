@@ -21,6 +21,7 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.subnet_cidr
+  availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
 
   tags = {
@@ -106,7 +107,6 @@ resource "aws_instance" "debian" {
     hostname       = var.hostname
     username       = var.username
     password_hash  = var.password_hash
-    ssh_public_key = tls_private_key.ssh.public_key_openssh
   })
 
   user_data_replace_on_change = true
